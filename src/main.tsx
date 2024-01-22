@@ -10,12 +10,13 @@ import 'antd/dist/reset.css';
 import './index.css';
 import HapticFeedbackDemo from './components/HapticFeedbackDemo';
 import BackButtonDemo from './components/BackButton';
+import { useExternalScripts } from './App';
 
 const DemoApp: FC<{
   onChangeTransition: DispatchWithoutAction;
 }> = () => {
   const [colorScheme, themeParams] = useThemeParams();
-
+  useExternalScripts("https://telegram.org/js/telegram-web-app.js");
   return (
     <div>
       <ConfigProvider
