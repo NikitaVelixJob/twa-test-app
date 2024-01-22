@@ -8,13 +8,16 @@ import { ConfigProvider, theme } from 'antd';
 import 'antd/dist/reset.css';
 
 import './index.css';
-import HapticFeedbackDemo from './components/HapticFeedbackDemo';
-import BackButtonDemo from './components/BackButton';
+
+import useBetaVersion from './components/useBetaVersion';
 
 const DemoApp: FC<{
   onChangeTransition: DispatchWithoutAction;
-}> = () => {
+}> = ({ onChangeTransition }) => {
   const [colorScheme, themeParams] = useThemeParams();
+  const [isBetaVersion, ] = useBetaVersion(false);
+  const [, setActiveBtn] = useState(true);
+
   return (
     <div>
       <ConfigProvider
@@ -35,8 +38,15 @@ const DemoApp: FC<{
         }
       >
         <div className="contentWrapper">
-          <HapticFeedbackDemo />
-          <BackButtonDemo />
+          {isBetaVersion && (
+            <div className="betaVersion">
+              <h3>WARNING: BETA VERSION</h3>
+              <button onClick={() => setActiveBtn(state => !state)}>
+                change button
+              </button>
+              <button onClick={onChangeTransition}>change </button>
+            </div>
+          )}
         </div>
       </ConfigProvider>
     </div>
