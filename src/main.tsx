@@ -15,7 +15,7 @@ const DemoApp: FC<{
   onChangeTransition: DispatchWithoutAction;
 }> = ({ onChangeTransition }) => {
   const [colorScheme, themeParams] = useThemeParams();
-  const [isBetaVersion, ] = useBetaVersion(false);
+  const [isBetaVersion, ] = useBetaVersion();
   const [, setActiveBtn] = useState(true);
 
   return (
