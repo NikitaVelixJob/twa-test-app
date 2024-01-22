@@ -1,4 +1,4 @@
-import React, { DispatchWithoutAction, FC, useState } from 'react';
+import { DispatchWithoutAction, FC, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import {
   useThemeParams,
@@ -12,9 +12,8 @@ import HapticFeedbackDemo from './components/HapticFeedbackDemo';
 
 const DemoApp: FC<{
   onChangeTransition: DispatchWithoutAction;
-}> = ({ onChangeTransition }) => {
+}> = () => {
   const [colorScheme, themeParams] = useThemeParams();
-  const [activeBtn, setActiveBtn] = useState(true);
 
   return (
     <div>
