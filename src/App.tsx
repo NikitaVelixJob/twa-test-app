@@ -1,5 +1,5 @@
 import './App.css'
-import { WebAppProvider, MainButton, useShowPopup } from '@vkruglikov/react-telegram-web-app';
+import { WebAppProvider, MainButton, useShowPopup, ThemeParams } from '@vkruglikov/react-telegram-web-app';
 import { useEffect } from 'react';
 
 export async function useExternalScripts(url: string) {
@@ -33,7 +33,6 @@ function App() {
   useExternalScripts("https://telegram.org/js/telegram-web-app.js");
 
   return (
-    <>
       <WebAppProvider
         options={{
           smoothButtonsTransition: true,
@@ -41,7 +40,6 @@ function App() {
       >
         <Content />
       </WebAppProvider>
-    </>
   )
 }
 
