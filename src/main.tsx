@@ -1,54 +1,17 @@
-import { DispatchWithoutAction, FC, useState } from 'react';
+import { FC } from 'react';
 import ReactDOM from 'react-dom/client';
 import {
-  useThemeParams,
   WebAppProvider,
 } from '@vkruglikov/react-telegram-web-app';
-import { ConfigProvider, theme } from 'antd';
+import { DatePicker } from 'antd';
 import 'antd/dist/reset.css';
 
 import './index.css';
 
-import useBetaVersion from './components/useBetaVersion';
-
-const DemoApp: FC<{
-  onChangeTransition: DispatchWithoutAction;
-}> = ({ onChangeTransition }) => {
-  const [colorScheme, themeParams] = useThemeParams();
-  const [isBetaVersion, ] = useBetaVersion();
-  const [, setActiveBtn] = useState(true);
-
+const MyApp: FC = () => {
   return (
-    <div>
-      <ConfigProvider
-        theme={
-          themeParams.text_color
-            ? {
-                algorithm:
-                  colorScheme === 'dark'
-                    ? theme.darkAlgorithm
-                    : theme.defaultAlgorithm,
-                token: {
-                  colorText: themeParams.text_color,
-                  colorPrimary: themeParams.button_color,
-                  colorBgBase: themeParams.bg_color,
-                },
-              }
-            : undefined
-        }
-      >
-        <div className="contentWrapper">
-          {isBetaVersion && (
-            <div className="betaVersion">
-              <h3>WARNING: BETA VERSION</h3>
-              <button onClick={() => setActiveBtn(state => !state)}>
-                change button
-              </button>
-              <button onClick={onChangeTransition}>change </button>
-            </div>
-          )}
-        </div>
-      </ConfigProvider>
+    <div className="flex items-center justify-center w-full min-h-screen">
+     <DatePicker />
     </div>
   );
 };
@@ -58,14 +21,12 @@ const root = ReactDOM.createRoot(
 );
 
 const App = () => {
-  const [smoothButtonsTransition, setSmoothButtonsTransition] = useState(false);
-
   return (
-    <WebAppProvider options={{ smoothButtonsTransition }}>
-      <DemoApp
-        onChangeTransition={() => setSmoothButtonsTransition(state => !state)}
-      />
+    <div className='min-h-screen min-w-screen'>
+    <WebAppProvider>
+      <MyApp />
     </WebAppProvider>
+    </div>
   );
 };
 
