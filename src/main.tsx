@@ -9,6 +9,7 @@ import 'antd/dist/reset.css';
 
 import './index.css';
 import HapticFeedbackDemo from './components/HapticFeedbackDemo';
+import BackButtonDemo from './components/BackButton';
 
 const DemoApp: FC<{
   onChangeTransition: DispatchWithoutAction;
@@ -36,6 +37,7 @@ const DemoApp: FC<{
       >
         <div className="contentWrapper">
           <HapticFeedbackDemo />
+          <BackButtonDemo />
         </div>
       </ConfigProvider>
     </div>
